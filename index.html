@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // 1. Function computerChoice that will return either rock paper or scissors
+        
+        let computerScore = 0;
+        let playerScore = 0;
+        
+        
+        function computerChoice () {
+
+            let compChoice;
+            let randomNumber = Math.floor(Math.random()*3);
+
+            if (randomNumber == 0) {
+                compChoice = "rock";
+            }
+
+            else if (randomNumber == 1) {
+                compChoice = "paper";
+            }
+
+            else { compChoice = "scissor"; }
+               
+            return compChoice;
+
+            }
+
+        //   2. Function that plays one round. Takes input of playerSelection and computerSelection. 
+
+            function playRound (playerSelection, computerSelection) {
+
+                let result;
+                let playerChoice = prompt(`Rock, Paper or Scissor ?`);
+                
+
+                playerSelection = playerChoice.toLowerCase();
+                computerSelection = computerChoice ();
+
+                if (playerSelection == computerSelection) {
+
+                    result = `It's a tie`;
+                    }
+
+                else if (playerSelection == `rock` && computerSelection == `paper` || 
+                        playerSelection == `paper` && computerSelection == `scissor` || 
+                        playerSelection == `scissor` && computerSelection == `rock`)    {
+
+                    result = `You lost ${computerSelection} beats ${playerSelection}`;
+                    computerScore++;
+                    }
+
+                else {
+
+                    result = `You won ${playerSelection} beats ${computerSelection}`;
+                    playerScore++;
+                    }
+
+                console.log (result);
+                console.log(computerScore);
+                console.log(playerScore);
+
+            }
+
+            function gameOfFive () {
+
+                
+                let Winner;
+                let Loser;
+                let winningScore;
+
+                while (computerScore != 5 && playerScore != 5 ) {
+
+                    playRound();
+
+                }
+
+                if (playerScore < computerScore) {
+
+                    Winner = `Computer`;
+                    Loser = `You`;
+                    winningScore = computerScore - playerScore;
+                }
+
+                else {
+
+                    Winner = `You`
+                    Loser = `Computer`
+                    winningScore = playerScore - computerScore;
+                }
+
+
+                console.log(`${Winner} beat ${Loser} by ${winningScore} points.`);
+
+            }
+
+    
+
+            
+            
+
+    
+
+        //        Returns a string that declares win or lose.
+        //   3.  
+    </script>
+</body>
+</html>
